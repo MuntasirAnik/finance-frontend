@@ -1,12 +1,35 @@
-import React from "react";
+import React, { ChangeEvent, SyntheticEvent, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Card from "./Component/Card/Card";
+import CardList from "./Component/CardList/CardList";
+import Search from "./Component/Search/Search";
+import { CompanySearch } from "./company";
+import { searchCompanies } from "./api";
 
 function App() {
+  const [search, setSearch] = useState<string>("");
+  const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    // console.log(e);
+  };
+  const onClick = async (e: SyntheticEvent) => {
+    const result = await searchCompanies(search);
+    if (typeof result === "string") {
+      setServerError(result);
+    } else if (Array.isArray(result.data)) {
+      setSearchResult(result.data);
+    }
+    console.log(searchResult);
+  };
+
   return (
-    <div className="App">
-      <Card />
+    <div className="m-4">
+      <Search onClick={onClick} search={search} handleChange={handleChange} />
+      {serverError && <div>Unable to connect to API</div>}
+      <CardList searchResults={searchResult} />
     </div>
   );
 }

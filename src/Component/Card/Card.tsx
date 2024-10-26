@@ -1,26 +1,29 @@
 import React from "react";
 import { Card } from "antd";
+import { CompanySearch } from "../../company";
 
 const { Meta } = Card;
+interface Props {
+  id: string;
+  searchResult: CompanySearch;
+}
 
-const App: React.FC = () => (
-  <div className="p-4">
+const Cards: React.FC<Props> = ({ id, searchResult }: Props): JSX.Element => (
+  <div className="">
     <Card
-      className="m-4 py-4 px-12"
+      className="m-4 py-4 px-12 h-80"
       hoverable
-      style={{ width: 300 }}
-      cover={
-        <img
-          alt="image"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/1200px-Apple_logo_grey.svg.png"
-        />
-      }
+      style={{ width: 250 }}
+      cover={<img className="h-40" alt="image" />}
     >
-      <Meta className="text-center" title="AAPL" />
-      <p className="text-center	mt-2">www.apple.com</p>
-      <p className="text-center	mt-2">$110</p>
+      <Meta className="text-center" title={searchResult.symbol} />
+      <p className="text-center	mt-2">{searchResult.name}</p>
+      <p className="text-center	mt-2">{searchResult.currency}</p>
+      <p className="text-center	mt-2">
+        {searchResult.exchangeShortName} - {searchResult.stockExchange}
+      </p>
     </Card>
   </div>
 );
 
-export default App;
+export default Cards;
