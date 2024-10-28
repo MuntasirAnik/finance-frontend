@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from "react";
 import { Card } from "antd";
 import { CompanySearch } from "../../company";
 import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 interface Props {
@@ -15,24 +16,25 @@ const Cards: React.FC<Props> = ({
   searchResult,
   onPortfolioCreate,
 }: Props): JSX.Element => (
-  <div className="">
-    <Card
-      className="m-4 py-4 px-12 "
-      hoverable
-      style={{ width: 300 }}
-      cover={<img className="h-40" alt="image" />}
+  <div
+    className="flex flex-col items-center justify-between w-full p-6 bg-slate-100 rounded-lg md:flex-row"
+    key={id}
+    id={id}
+  >
+    <Link
+      to={`/company/${searchResult.symbol}/company-profile`}
+      className="font-bold text-center text-black md:text-left"
     >
-      <Meta className="text-center" title={searchResult.symbol} />
-      <p className="text-center	mt-2">{searchResult.name}</p>
-      <p className="text-center	mt-2">{searchResult.currency}</p>
-      <p className="text-center	mt-2">
-        {searchResult.exchangeShortName} - {searchResult.stockExchange}
-      </p>
-      <AddPortfolio
-        onPortfolioCreate={onPortfolioCreate}
-        symbol={searchResult.symbol}
-      />
-    </Card>
+      {searchResult.name} ({searchResult.symbol})
+    </Link>
+    <p className="text-black">{searchResult.currency}</p>
+    <p className="font-bold text-black">
+      {searchResult.exchangeShortName} - {searchResult.stockExchange}
+    </p>
+    <AddPortfolio
+      onPortfolioCreate={onPortfolioCreate}
+      symbol={searchResult.symbol}
+    />
   </div>
 );
 
