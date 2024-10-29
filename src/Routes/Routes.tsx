@@ -7,6 +7,7 @@ import CompanyProfile from "../Component/CompanyProfile/CompanyProfile";
 import IncomeStatement from "../Component/IncomeStatement/IncomeStatement";
 import DesignPage from "../Pages/DesignPage/DesignPage";
 import BalanceSheet from "../Component/BalanceSheet/BalanceSheet";
+import CashflowStatement from "../Component/CashflowStatement/CashflowStatement";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
           { path: "company-profile", element: <CompanyProfile /> },
           { path: "income-statement", element: <IncomeStatement /> },
           { path: "balance-sheet", element: <BalanceSheet /> },
+          { path: "cashflow-statement", element: <CashflowStatement /> },
         ],
       },
     ],

@@ -37,6 +37,13 @@ const Sidebar = (props: Props) => {
                 <HiCurrencyDollar />
                 <h6>balance Sheet</h6>
               </Link>
+              <Link
+                to="cashflow-statement"
+                className="flex md:min-w-full text-BlueGray-500 text-medium text-black uppercase font-bold pt-1 pb-4 no-underline"
+              >
+                <HiCurrencyDollar />
+                <h6>Cashflow Statement</h6>
+              </Link>
             </h6>
           </div>
         </div>
