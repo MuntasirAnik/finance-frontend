@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { HiCurrencyDollar } from "react-icons/hi";
 
 interface Props {}
 
@@ -26,7 +27,7 @@ const Sidebar = (props: Props) => {
                 to="income-statement"
                 className="flex md:min-w-full text-BlueGray-500 text-medium text-black uppercase font-bold pt-1 pb-4 no-underline"
               >
-                <FaHome />
+                <HiCurrencyDollar />
                 <h6>Income Statement</h6>
               </Link>
             </h6>
