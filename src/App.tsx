@@ -1,13 +1,15 @@
-import React from "react";
-import logo from "./logo.svg";
+import { Outlet } from "react-router";
 import "./App.css";
-import Card from "./Component/Card/Card";
+import Navbar from "./Component/Navbar/Navbar";
+import FooterComponent from "./Component/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <Card />
-    </div>
+    <>
+      <Navbar />
+      <Outlet />
+      {/* <FooterComponent /> */}
+    </>
   );
 }
 

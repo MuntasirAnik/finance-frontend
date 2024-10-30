@@ -1,26 +1,41 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Card } from "antd";
+import { CompanySearch } from "../../company";
+import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
+interface Props {
+  id: string;
+  searchResult: CompanySearch;
+  onPortfolioCreate: (e: SyntheticEvent) => void;
+}
 
-const App: React.FC = () => (
-  <div className="p-4">
-    <Card
-      className="m-4 py-4 px-12"
-      hoverable
-      style={{ width: 300 }}
-      cover={
-        <img
-          alt="image"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/1200px-Apple_logo_grey.svg.png"
-        />
-      }
+const Cards: React.FC<Props> = ({
+  id,
+  searchResult,
+  onPortfolioCreate,
+}: Props): JSX.Element => (
+  <div
+    className="flex flex-col items-center justify-between w-full p-6 bg-slate-100 rounded-lg md:flex-row"
+    key={id}
+    id={id}
+  >
+    <Link
+      to={`/company/${searchResult.symbol}/company-profile`}
+      className="font-bold text-center text-black md:text-left"
     >
-      <Meta className="text-center" title="AAPL" />
-      <p className="text-center	mt-2">www.apple.com</p>
-      <p className="text-center	mt-2">$110</p>
-    </Card>
+      {searchResult.name} ({searchResult.symbol})
+    </Link>
+    <p className="text-black">{searchResult.currency}</p>
+    <p className="font-bold text-black">
+      {searchResult.exchangeShortName} - {searchResult.stockExchange}
+    </p>
+    <AddPortfolio
+      onPortfolioCreate={onPortfolioCreate}
+      symbol={searchResult.symbol}
+    />
   </div>
 );
 
-export default App;
+export default Cards;
