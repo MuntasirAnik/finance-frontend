@@ -7,7 +7,7 @@ interface Props {}
 const Navbar = (props: Props) => {
   // const { isLoggedIn, user, logout } = useAuth();
   return (
-    <nav className=" container mx-auto p-6 sticky top-0 z-20 bg-slate-900">
+    <nav className="w-full container mx-auto p-6 sticky top-0 z-20 bg-slate-900">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-20">
           <Link to="/">
