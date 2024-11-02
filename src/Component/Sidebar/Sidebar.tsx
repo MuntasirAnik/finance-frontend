@@ -7,26 +7,26 @@ import { Menu, MenuProps, theme } from "antd";
 
 interface Props {}
 
-const items2: MenuProps['items'] = [
+const items2: MenuProps["items"] = [
   {
-    key: '1',
+    key: "1",
     icon: <FaHome />,
-    label: <Link to="company-profile">Company Profile</Link>
+    label: <Link to="company-profile">Company Profile</Link>,
   },
   {
-    key: '2',
+    key: "2",
     icon: <HiCurrencyDollar />,
-    label: <Link to="income-statement">Income Statement</Link>
+    label: <Link to="income-statement">Income Statement</Link>,
   },
   {
-    key: '3',
+    key: "3",
     icon: <HiCurrencyDollar />,
-    label: <Link to="balance-sheet">Balance Sheet</Link>
+    label: <Link to="balance-sheet">Balance Sheet</Link>,
   },
   {
-    key: '4',
+    key: "4",
     icon: <HiCurrencyDollar />,
-    label: <Link to="cashflow-statement">Cashflow Statement</Link>
+    label: <Link to="cashflow-statement">Cashflow Statement</Link>,
   },
 ];
 
@@ -79,14 +79,14 @@ const Sidebar = (props: Props) => {
     // </nav>
 
     <Sider width={200} style={{ background: colorBgContainer }}>
-        <Menu
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
-          style={{ height: '100%', borderRight: 0 }}
-           items={items2}
-        />
-      </Sider>
+      <Menu
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
+        style={{ height: "100%", borderRight: 0 }}
+        items={items2}
+      />
+    </Sider>
   );
 };
 
